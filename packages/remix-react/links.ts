@@ -1,6 +1,7 @@
 // import type { Location } from "history";
 import type { Location } from "history";
 import { parsePath } from "history";
+import type { LiteralUnion } from "type-fest";
 
 import type { AssetsManifest } from "./entry";
 import type { ClientRoute } from "./routes";
@@ -28,7 +29,7 @@ export interface HtmlLinkDescriptor {
   /**
    * Relationship between the document containing the hyperlink and the destination resource
    */
-  rel:
+  rel: LiteralUnion<
     | "alternate"
     | "dns-prefetch"
     | "icon"
@@ -41,8 +42,9 @@ export interface HtmlLinkDescriptor {
     | "preload"
     | "prerender"
     | "search"
-    | "stylesheet"
-    | string;
+    | "stylesheet",
+    string
+  >;
 
   /**
    * Applicable media: "screen", "print", "(max-width: 764px)"
@@ -96,7 +98,7 @@ export interface HtmlLinkDescriptor {
   /**
    * Potential destination for a preload request (for rel="preload" and rel="modulepreload")
    */
-  as?:
+  as?: LiteralUnion<
     | "audio"
     | "audioworklet"
     | "document"
@@ -117,8 +119,9 @@ export interface HtmlLinkDescriptor {
     | "track"
     | "video"
     | "worker"
-    | "xslt"
-    | string;
+    | "xslt",
+    string
+  >;
 
   /**
    * Color to use when customizing a site's icon (for rel="mask-icon")
